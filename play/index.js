@@ -78,12 +78,13 @@ play("Carousel", module)
   .add("Dynamic, add or remove slides", {
     template:
       `<div style="width: 100%; display: flex; justify-content: center; margin-top: 40px;">
-        <carousel style="width: 500px;">
+        <carousel style="width: 500px;" :navigateTo="navigateTo">
           <slide v-for="slide in slideCount">
             <img style="width: 100%;" src="https://res.cloudinary.com/ssenseweb/image/upload/b_white,c_lpad,g_south,h_1086,w_724/c_scale,h_560/v588/171924M176006_1.jpg" />
           </slide>
         </carousel>
         <div style="float: left">
+          <input type="number" v-model.number="navigateTo">
           <button v-on:click="addSlide">Add slide</button>
           <button v-on:click="removeSlide">Remove slide</button>
         </div>
@@ -94,7 +95,8 @@ play("Carousel", module)
     },
     data() {
       return {
-        slideCount: 4
+        slideCount: 4,
+        navigateTo: 1
       }
     },
     methods: {
